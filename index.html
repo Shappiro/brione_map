@@ -9,16 +9,38 @@
         <link rel="stylesheet" href="css/leaflet.css">
         <link rel="stylesheet" href="css/qgis2web.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
+		<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
         <style>
+		html {
+			font-family: 'Oswald', sans-serif !important;
+		}
+		.leaflet-container {
+			font-family: 'Oswald', sans-serif !important;
+			font-size: 14px;
+		}
+
         #map {
-            width: 1101px;
-            height: 819px;
+            width: 95%;
+            height: 800px;
         }
+
+        .center-element {
+        	margin: 0 auto;
+        }
+		.center-text {
+			text-align: center;
+		}
         </style>
         <title></title>
     </head>
     <body>
-        <div id="map">
+		<div class='center-text'>
+			<h2>Mappa della biodiversità del Monte Brione</h2>   
+		</div>
+		
+        <div id="map" class='center-element'>
+		</div>
+
         </div>
         <script src="js/qgis2web_expressions.js"></script>
         <script src="js/leaflet.js"></script>
@@ -37,7 +59,6 @@
             zoomControl:true, maxZoom:28, minZoom:1
         }).fitBounds([[45.8770002703,10.854029169],[45.8940953423,10.8886448677]]);
         var hash = new L.Hash(map);
-        map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
         var measureControl = new L.Control.Measure({
             primaryLengthUnit: 'meters',
             secondaryLengthUnit: 'kilometers',
@@ -260,7 +281,7 @@
         map.getPane('pane_habitat_2').style.zIndex = 402;
         map.getPane('pane_habitat_2').style['mix-blend-mode'] = 'normal';
         var layer_habitat_2 = new L.geoJson(json_habitat_2, {
-            attribution: '<a href=""></a>',
+            attribution: '<a href="http://www.territorio.provincia.tn.it/portal/server.pt/gateway/PTARGS_0_18720_2521_862_0_43/http%3B/172.20.3.95%3B8380/geoportlet/showSingleMetadata.jsp?uuid=p_tn%3Ahabitat&id=1449&currTab=simple">Provincia Autonoma di Trento - Servizio Conservazione della Natura e Valorizzazione ambientale</a>',
             pane: 'pane_habitat_2',
             onEachFeature: pop_habitat_2,
             style: style_habitat_2_0,
@@ -270,7 +291,7 @@
         function pop_IT3120075MonteBrione_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2"><strong><a href="https://it.wikipedia.org/wiki/Zona_speciale_di_conservazione">ZSC</a></strong><br />' + (feature.properties['attr'] !== null ? Autolinker.link(String(feature.properties['attr'])) : '') + '</td>\
+                        <td colspan="2"><strong></strong><br />' + (feature.properties['attr'] !== null ? Autolinker.link(String(feature.properties['attr'])) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2"><strong>Area</strong>: ' + (feature.properties['area_mq'] !== null ? Autolinker.link(String(feature.properties['area_mq'])) : '') + '</td>\
@@ -297,7 +318,7 @@
         map.getPane('pane_IT3120075MonteBrione_3').style.zIndex = 403;
         map.getPane('pane_IT3120075MonteBrione_3').style['mix-blend-mode'] = 'normal';
         var layer_IT3120075MonteBrione_3 = new L.geoJson(json_IT3120075MonteBrione_3, {
-            attribution: '<a href=""></a>',
+            attribution: '<a href="http://www.territorio.provincia.tn.it/portal/server.pt/gateway/PTARGS_0_18720_2521_862_0_43/http%3B/172.20.3.95%3B8380/geoportlet/showSingleMetadata.jsp?uuid=P_TN%3A67fdacfb-6dda-42ee-81c0-7b0c1c19fb5e&id=1685&currTab=simple">Provincia Autonoma di Trento - Dipartimento Risorse Forestali e Montane</a>',
             pane: 'pane_IT3120075MonteBrione_3',
             onEachFeature: pop_IT3120075MonteBrione_3,
             style: style_IT3120075MonteBrione_3_0,
@@ -305,7 +326,7 @@
         bounds_group.addLayer(layer_IT3120075MonteBrione_3);
         map.addLayer(layer_IT3120075MonteBrione_3);
         var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/IT3120075MonteBrione_3.png" /> IT3120075: Monte Brione': layer_IT3120075MonteBrione_3,'habitat<br /><table><tr><td style="text-align: center;"><img src="legend/habitat_2_Incoltoruderale0.png" /></td><td>Incolto ruderale</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Lecceta1.png" /></td><td>Lecceta</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_LeccetaconBuxussempervirens2.png" /></td><td>Lecceta con Buxus sempervirens</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Oliveto3.png" /></td><td>Oliveto</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Ornoostrietoconleccio4.png" /></td><td>Orno-ostrieto con leccio</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Ornoostrietoconleccioebosso5.png" /></td><td>Orno-ostrieto con leccio e bosso</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Paretiroccioseconleccioecengeerbose6.png" /></td><td>Pareti rocciose con leccio e cenge erbose</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Pratimagri7.png" /></td><td>Prati magri</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Pratimagriricchidiorchidee8.png" /></td><td>Prati magri ricchi di orchidee</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_PratimagriconBuxussempervirens9.png" /></td><td>Prati magri con Buxus sempervirens</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_NonhabitatNatura200010.png" /></td><td>Non-habitat Natura 2000</td></tr></table>': layer_habitat_2,"Mappa catastale": overlay_Mappacatastale_1,"DTM": overlay_DTM_0,},{collapsed:false}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/IT3120075MonteBrione_3.png" /> Confine <a href="https://it.wikipedia.org/wiki/Zona_speciale_di_conservazione">ZSC</a>': layer_IT3120075MonteBrione_3,'Habitat <a href="http://www.minambiente.it/pagina/rete-natura-2000">Natura 2000</a><br /><table><tr><td style="text-align: center;"><img src="legend/habitat_2_Incoltoruderale0.png" /></td><td>Incolto ruderale</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Lecceta1.png" /></td><td>Lecceta</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_LeccetaconBuxussempervirens2.png" /></td><td>Lecceta con Buxus sempervirens</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Oliveto3.png" /></td><td>Oliveto</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Ornoostrietoconleccio4.png" /></td><td>Orno-ostrieto con leccio</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Ornoostrietoconleccioebosso5.png" /></td><td>Orno-ostrieto con leccio e bosso</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Paretiroccioseconleccioecengeerbose6.png" /></td><td>Pareti rocciose con leccio e cenge erbose</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Pratimagri7.png" /></td><td>Prati magri</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_Pratimagriricchidiorchidee8.png" /></td><td>Prati magri ricchi di orchidee</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_PratimagriconBuxussempervirens9.png" /></td><td>Prati magri con Buxus sempervirens</td></tr><tr><td style="text-align: center;"><img src="legend/habitat_2_NonhabitatNatura200010.png" /></td><td>Non-habitat Natura 2000</td></tr></table>': layer_habitat_2,"Mappa catastale": overlay_Mappacatastale_1,"DTM": overlay_DTM_0,},{collapsed:false}).addTo(map);
         setBounds();
         L.ImageOverlay.include({
             getBounds: function () {

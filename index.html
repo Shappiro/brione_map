@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,19 +36,19 @@
     <body>
 		<div class='center-text'>
             
-            <img href="/images/logo_wwf_trentino.png" width="12%" class="center-element"/>
+            <img src="images/logo_wwf_trentino.png" width="12%" class="center-element"/>
             <br>
-			<h2>Mappa della biodiversità del Monte Brione e dintorni</h2>   
+			<h2>Mappa della biodiversità del Monte Brione (e dintorni)</h2>   
+            Una semplice applicazione per navigare tra le ricchezze floro-faunistiche del Gigante, realizzata dall'Associazione per il WWF Trentino.
 		</div>
-		Una semplice applicazione per navigare tra le ricchezze floro-faunistiche del Gigante.
         <br>  
         <div id="map" class='center-element'>
 		</div>
         <br>
         <div class="center-text">
-            <small>Realizzato grazie al contributo del <a href="http://www.parcofluvialesarca.tn.it/pdf/AVVISO_PUBBLICO_MANIFLU_2017.pdf">Bando Maniflu -ed. 2017-</a> promosso dal Parco Fluviale della Sarca </small>. Il codice sorgente dell'applicazione è liberamente disponibile su <a href="https://github.com/Shappiro/brione_map">GitHUb</a>.
+            <small>Realizzato grazie al contributo del <a href="http://www.parcofluvialesarca.tn.it/pdf/AVVISO_PUBBLICO_MANIFLU_2017.pdf">Bando Maniflu -ed. 2017-</a> promosso dal Parco Fluviale della Sarca. Il codice sorgente dell'applicazione è liberamente disponibile su <a href="https://github.com/Shappiro/brione_map">GitHUb</a>. </small>
             <br>
-            <img href="/images/PARCOfluviale_web.png" width="25%" class="center-element"/>
+            <img src="images/PARCOfluviale_web.png" width="15%" class="center-element"/>
         </div>
         </div>
         <script src="js/geojson.js"></script>
@@ -365,7 +365,6 @@
 				}
 			});
 			data = GeoJSON.parse(data, {Point: ['latitude', 'longitude']});
-			console.log(data);
 			L.geoJSON(data, {
 				onEachFeature: onEachFeature
 			}).addTo(map);

@@ -35,7 +35,7 @@
     </head>
     <body>
 		<div class='center-text'>
-			<h2>Mappa della biodiversità del Monte Brione</h2>   
+			<h2>Mappa della biodiversità del Monte Brione e dintorni</h2>   
 		</div>
 		
         <div id="map" class='center-element'>
@@ -91,28 +91,7 @@
         function pop_habitat_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['note_'] !== null ? Autolinker.link(String(feature.properties['note_'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['codice'] !== null ? Autolinker.link(String(feature.properties['codice'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['vegetaz'] !== null ? Autolinker.link(String(feature.properties['vegetaz'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['hab_it'] !== null ? Autolinker.link(String(feature.properties['hab_it'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['prior_'] !== null ? Autolinker.link(String(feature.properties['prior_'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ii_codice'] !== null ? Autolinker.link(String(feature.properties['ii_codice'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['ii_vegetaz'] !== null ? Autolinker.link(String(feature.properties['ii_vegetaz'])) : '') + '</td>\
+                        <td colspan="2"><strong>Habitat ' + (feature.properties['codice'] !== null ? Autolinker.link(String(feature.properties['codice'])) : '') + '</strong></td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['ii_hab_it'] !== null ? Autolinker.link(String(feature.properties['ii_hab_it'])) : '') + '</td>\
@@ -353,13 +332,13 @@
 		        	`
 		        	<strong><em>${feature.properties.taxon.name}</em></strong>
 					<hr>
-					${commonNameNotNull && `<em>` + feature.properties.taxon.common_name.name + `</em><br>`}
+					${commonNameNotNull && feature.properties.taxon.common_name.name + `<br>`}
 					<br>
-					Osservato il ${feature.properties.observed_on} da ${feature.properties.user.login}
+					Osservato il ${feature.properties.observed_on} da <em>${feature.properties.user.login} </em>
 					<br>
 					<img src="${feature.properties.photos[0].square_url}></img>"   
 		        	<br>
-		        	<a href="${feature.properties.uri}">Link</a>
+		        	<a href="${feature.properties.uri}" target="_blank">Link</a>
 		        	`
 		        	);
 		    }
@@ -367,7 +346,7 @@
 
 		$.ajax({
 		    type: "GET",
-		    url: 'https://www.inaturalist.org/observations.json?swlat=45.8770002703&swlng=10.854029169&nelat=45.8940953423&nelng=10.8886448677',
+		    url: 'https://www.inaturalist.org/observations.json?swlat=45.8770002703&swlng=10.854029169&nelat=45.8940953423&nelng=10.89',
 		    dataType: 'json',
 		}).done(function (data) {
 			//data.filter(dat => dat.mappable === true);
